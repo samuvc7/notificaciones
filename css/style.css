@@ -53,3 +53,33 @@ body {
     margin: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.bg-red {
+    background-color: rgb(155, 60, 29);
+    color: white;
+}
+
+.bg-green {
+    background-color: rgb(55, 203, 70);
+    color: black;
+}
+
+.bg-gray {
+    background-color: rgb(179, 179, 179);
+    color: black;
+}
+
+.footer {
+    position: fixed;  
+    bottom: 0;        
+    left: 0;          
+    width: 100%;      
+    text-align: center;  
+    padding: 10px 0; 
+    font-size: 16px;  
+    z-index: 1000;  
+}
+
+/* Ocultar inicialmente */
+.hidden {
+    display: none;
+}
