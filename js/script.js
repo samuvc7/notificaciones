@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function (event) {
 
     // ====================== Constantes del DOM ======================
+    const icono_campana = document.getElementById("icono_campana");
     const campana = document.getElementById("campana");
     const mensajes = document.getElementById("mensajes");
     const boton_error = document.getElementById("boton_error");
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // ====================== Variables ======================
 
     // ====================== Flujo ======================
-    setInterval(nuevaNotificacion, 5000);
+    setInterval(nuevaNotificacion, 500);
 
     // ====================== Eventos ======================
     campana.addEventListener("click", () => mostrarOcultarNotificaciones());
@@ -48,20 +49,38 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // Función para añadir notificaciones
     function nuevaNotificacion() {
+        if(mensajes.childNodes.length == 9){
+            mensajes.removeChild(mensajes.firstChild);
+        }
         const notificacion = document.createElement("div");
         notificacion.classList.add("notificacion");
         notificacion.innerHTML = "🔔 Tienes una nueva notificación.";
+        
+        const icono_cerrar = document.createElement("img");
+        icono_cerrar.src = "imgs/cerrar_negro.png";
+        icono_cerrar.className = "icono_cerrar";
+        icono_cerrar.addEventListener("click", function(){
+            icono_cerrar.parentElement.remove();
+        });
+        
+        notificacion.appendChild(icono_cerrar);
         mensajes.appendChild(notificacion);
     }
 
     // Función para mostrar las notificaciones
     function mostrarOcultarNotificaciones() {
         if (mensajes.classList.contains("invisible")) {
+            icono_campana.src = "imgs/campana.png";
             mensajes.classList.remove("invisible");
         } else {
+            icono_campana.src = "imgs/campana_tachada.png";
             mensajes.classList.add("invisible");
         }
     }
+
+
+
+
 
 
 });

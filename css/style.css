@@ -46,10 +46,19 @@ body {
 }
 
 .notificacion {
+    display: flex;
+    justify-content: space-between;
+    
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icono_cerrar{
+    align-self: self-end;
+    width: 15px;
+    height: 15px;
 }
