@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // ====================== Variables ======================
 
     // ====================== Flujo ======================
-    setInterval(nuevaNotificacion, 500);
+    setInterval(nuevaNotificacion, 5000);
 
     // ====================== Eventos ======================
     campana.addEventListener("click", () => mostrarOcultarNotificaciones());
@@ -52,9 +52,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
         if(mensajes.childNodes.length == 9){
             mensajes.removeChild(mensajes.firstChild);
         }
+
         const notificacion = document.createElement("div");
         notificacion.classList.add("notificacion");
         notificacion.innerHTML = seleccionarNotificacion();
+
+        const icono_cerrar = document.createElement("img");
+        icono_cerrar.src = "imgs/cerrar_negro.png";
+        icono_cerrar.className = "icono_cerrar";
+        icono_cerrar.addEventListener("click", function(){
+            icono_cerrar.parentElement.remove();
+        });
+
+        notificacion.appendChild(icono_cerrar);
         mensajes.appendChild(notificacion);
     }
 
@@ -68,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             "📢 Nueva Mención: {nombre} te mencionó en una publicación",
             "👥 Nuevo Seguidor : {nombre} ha comenzado a seguirte"
         ];
+
 
         // Seleccionamos una notificación y una persona aleatoria
         const notificacion = notificaciones[Math.floor(Math.random() * notificaciones.length)];
