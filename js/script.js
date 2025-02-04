@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             "❤️ Nuevo Me Gusta: A {nombre} le gustó tu publicación.",
             "💬 Nuevo Comentario: {nombre} comentó en tu publicación.",
             "📢 Nueva Mención: {nombre} te mencionó en una publicación",
-            "👥 Nueva Solicitud de Amistad : {nombre} quiere ser tu amigo"
+            "👥 Nuevo Seguidor : {nombre} ha comenzado a seguirte"
         ];
 
         // Seleccionamos una notificación y una persona aleatoria
