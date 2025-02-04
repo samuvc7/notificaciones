@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // Función para seleccionar las notificaciones
     function seleccionarNotificacion() {
-        const nombres = ["Diego", "Ángel", "Mario", "María", "Jorge", "Elena", "Pablo", "Pedro"];
+        const nombres = ["Diego", "Ángel", "Mario", "María", "Aitor", "Elena", "Samuel", "Pedro"];
 
         const notificaciones = [
             "❤️ Nuevo Me Gusta: A {nombre} le gustó tu publicación.",
