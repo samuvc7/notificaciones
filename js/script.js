@@ -56,16 +56,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // Función para seleccionar las notificaciones
     function seleccionarNotificacion() {
+        const nombres = ["Diego", "Ángel", "Mario", "María", "Jorge", "Elena", "Pablo", "Pedro"];
+
         const notificaciones = [
-            "❤️ Nuevo Me Gusta: A un usuario le gustó tu publicación.",
-            "💬 Nuevo Comentario: Un usuario comentó en tu publicación.",
-            "📢 Nueva Mención: Un usuario te mencionó en una publicación",
-            "👥 Nueva Solicitud de Amistad : Un usuario quiere ser tu amigo"
+            "❤️ Nuevo Me Gusta: A {nombre} le gustó tu publicación.",
+            "💬 Nuevo Comentario: {nombre} comentó en tu publicación.",
+            "📢 Nueva Mención: {nombre} te mencionó en una publicación",
+            "👥 Nueva Solicitud de Amistad : {nombre} quiere ser tu amigo"
         ];
 
-        const randomNoti = notificaciones[Math.floor(Math.random() * notificaciones.length)];
-
-        return randomNoti;
+        // Seleccionamos una notificación y una persona aleatoria
+        const notificacion = notificaciones[Math.floor(Math.random() * notificaciones.length)];
+        const nombre = nombres[Math.floor(Math.random() * nombres.length)];
+        
+        // Reemplazamos el nombre que hemos seleccionado en la notificación
+        return notificacion.replace("{nombre}", nombre);
     }
 
     // Función para mostrar las notificaciones
