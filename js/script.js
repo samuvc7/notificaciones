@@ -57,8 +57,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // Función para seleccionar las notificaciones
     function seleccionarNotificacion() {
         const notificaciones = [
-            "",
-        ]
+            "❤️ Nuevo Me Gusta: A un usuario le gustó tu publicación.",
+            "💬 Nuevo Comentario: Un usuario comentó en tu publicación.",
+            "📢 Nueva Mención: Un usuario te mencionó en una publicación",
+            "👥 Nueva Solicitud de Amistad : Un usuario quiere ser tu amigo"
+        ];
+
+        const randomNoti = notificaciones[Math.floor(Math.random() * notificaciones.length)];
+
+        return randomNoti;
     }
 
     // Función para mostrar las notificaciones
