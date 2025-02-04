@@ -50,8 +50,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
     function nuevaNotificacion() {
         const notificacion = document.createElement("div");
         notificacion.classList.add("notificacion");
-        notificacion.innerHTML = "🔔 Tienes una nueva notificación.";
+        notificacion.innerHTML = seleccionarNotificacion();
         mensajes.appendChild(notificacion);
+    }
+
+    // Función para seleccionar las notificaciones
+    function seleccionarNotificacion() {
+        const notificaciones = [
+            "",
+        ]
     }
 
     // Función para mostrar las notificaciones
