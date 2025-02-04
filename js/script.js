@@ -54,17 +54,27 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }
         const notificacion = document.createElement("div");
         notificacion.classList.add("notificacion");
-        notificacion.innerHTML = "🔔 Tienes una nueva notificación.";
-        
-        const icono_cerrar = document.createElement("img");
-        icono_cerrar.src = "imgs/cerrar_negro.png";
-        icono_cerrar.className = "icono_cerrar";
-        icono_cerrar.addEventListener("click", function(){
-            icono_cerrar.parentElement.remove();
-        });
-        
-        notificacion.appendChild(icono_cerrar);
+        notificacion.innerHTML = seleccionarNotificacion();
         mensajes.appendChild(notificacion);
+    }
+
+    // Función para seleccionar las notificaciones
+    function seleccionarNotificacion() {
+        const nombres = ["Diego", "Ángel", "Mario", "María", "Jorge", "Elena", "Pablo", "Pedro"];
+
+        const notificaciones = [
+            "❤️ Nuevo Me Gusta: A {nombre} le gustó tu publicación.",
+            "💬 Nuevo Comentario: {nombre} comentó en tu publicación.",
+            "📢 Nueva Mención: {nombre} te mencionó en una publicación",
+            "👥 Nuevo Seguidor : {nombre} ha comenzado a seguirte"
+        ];
+
+        // Seleccionamos una notificación y una persona aleatoria
+        const notificacion = notificaciones[Math.floor(Math.random() * notificaciones.length)];
+        const nombre = nombres[Math.floor(Math.random() * nombres.length)];
+        
+        // Reemplazamos el nombre que hemos seleccionado en la notificación
+        return notificacion.replace("{nombre}", nombre);
     }
 
     // Función para mostrar las notificaciones
