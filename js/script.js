@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ====================== Variables ======================
 
     // ====================== Flujo ======================
-    setInterval(nuevaNotificacion, 500);
+    setInterval(nuevaNotificacion, 5000);
 
     // ====================== Eventos ======================
     campana.addEventListener("click", () => mostrarOcultarNotificaciones());
@@ -73,9 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para añadir notificaciones
     function nuevaNotificacion() {
-        if(mensajes.childNodes.length == 9){
-            mensajes.removeChild(mensajes.firstChild);
-        }
 
         const notificacion = document.createElement("div");
         notificacion.classList.add("notificacion");
