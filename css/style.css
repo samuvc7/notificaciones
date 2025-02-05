@@ -33,12 +33,16 @@ body {
     position: absolute;
     top: 80px;
     right: 20px;
-    width: 480px;
+    width: 50%;
+    max-width: 500px;
+    max-height: 75%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+    overflow-y: auto; 
+    scrollbar-width: 5px;
 }
 
 .invisible {
@@ -48,7 +52,6 @@ body {
 .notificacion {
     display: flex;
     justify-content: space-between;
-    
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -57,10 +60,11 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.icono_cerrar {
-    align-self: flex-end;
+.icono_cerrar{
+    align-items: self-start;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .bg-red {
