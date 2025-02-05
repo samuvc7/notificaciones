@@ -25,20 +25,19 @@
             </div>
 
             <div class="mandar-mensajes">
-                <button id="boton_error">Error</button>
-                <button id="boton_exito">Exito</button>
-                <button id="boton_info">Mostrar Información</button>
+                <button class="boton" id="boton_error">Error</button>
+                <button class="boton" id="boton_exito">Exito</button>
+                <button class="boton" id="boton_info">Información</button>
             </div>
 
             <div class="caja-enviar-msg">
-                <label>Tipo Mensaje</label>
-                <select id="opciones-mensaje" class="opciones-mensaje">
+                <select class="input-texto" id="opciones-mensaje">
                     <option value="msg-error">Mensaje Error</option>
                     <option value="msg-exito">Mensaje Exito</option>
                     <option value="msg-info">Mensaje Informacion</option>
                 </select>
                 <input class="input-texto" id="texto-enviar" type="text">
-                <button class="boton-enviar" onclick="mandar_alerta(document.getElementById('opciones-mensaje').value, document.getElementById('texto-enviar').value)">Enviar</button>
+                <button class="boton" onclick="mandar_alerta(document.getElementById('opciones-mensaje').value, document.getElementById('texto-enviar').value)">Enviar</button>
             </div>
 
             <div id="caja_footer" class="footer hidden">
