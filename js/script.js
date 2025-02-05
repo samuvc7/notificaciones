@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const boton_error = document.getElementById("boton_error");
     const boton_exito = document.getElementById("boton_exito");
     const boton_info = document.getElementById("boton_info");
+    const boton_eliminar_footer = document.getElementById("quitar_footer");
+    const caja_footer = document.getElementById("caja_footer");
+    const texto_msg_footer = document.getElementById("texto_msg_footer");
+
 
     // ====================== Variables ======================
 
@@ -19,32 +23,42 @@ document.addEventListener('DOMContentLoaded', function (event) {
     boton_error.addEventListener("click", () => mostrarMensajeFooter('error'));
     boton_exito.addEventListener("click", () => mostrarMensajeFooter('exito'));
     boton_info.addEventListener("click", () => mostrarMensajeFooter('info'));
+    boton_eliminar_footer.addEventListener("click", () => ocultarElemento(caja_footer));
 
     // ====================== Funciones ======================
 
     // FUNCION PARA MOSTRAR AVISOS EN EL FOOTER
     function mostrarMensajeFooter(tipo_mensaje) {
-        const caja = document.getElementById("mensajes_footer");
         let mensaje = "";
-        caja.classList.remove("hidden");
+        caja_footer.classList.remove("hidden", "bg-green", "bg-gray", "bg-red");
 
         switch (tipo_mensaje) {
             case 'error':
-                caja.classList.add('msg-error');
+                caja_footer.classList.add('bg-red');
                 mensaje = "❌ Ha ocurrido un error.";
                 break;
             case 'exito':
-                caja.classList.add('msg-exito');
+                caja_footer.classList.add('bg-green');
                 mensaje = "✅ Operación realizada con éxito.";
                 break;
             case 'info':
-                caja.classList.add('msg-info');
-                mensaje = "<b>i</b> Información importante.";
+                caja_footer.classList.add('bg-gray');
+                mensaje = "ℹ️ Información importante.";
                 break;
             default:
                 mensaje = "";
         }
-        caja.innerHTML = `<h3>${mensaje}</h3>`
+
+        texto_msg_footer.textContent = mensaje;
+
+        // Ocultar el mensaje después de 3 segundos
+        setTimeout(() => {
+            caja_footer.classList.add("hidden");
+        }, 3000);
+    }
+
+    function ocultarElemento(elemento) {
+        elemento.classList.add("hidden");
     }
 
     // Función para añadir notificaciones
@@ -70,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // Función para seleccionar las notificaciones
     function seleccionarNotificacion() {
-        const nombres = ["Diego", "Ángel", "Mario", "María", "Jorge", "Elena", "Pablo", "Pedro"];
+        const nombres = ["Diego", "Ángel", "Mario", "María", "Aitor", "Elena", "Samuel", "Pedro"];
 
         const notificaciones = [
             "❤️ Nuevo Me Gusta: A {nombre} le gustó tu publicación.",
