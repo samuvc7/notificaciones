@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const boton_error = document.getElementById("boton_error");
     const boton_exito = document.getElementById("boton_exito");
     const boton_info = document.getElementById("boton_info");
+    const despliegue = document.getElementById("despliegue-notif");
     const boton_eliminar_footer = document.getElementById("quitar_footer");
     const caja_footer = document.getElementById("caja_footer");
     const texto_msg_footer = document.getElementById("texto_msg_footer");
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     boton_eliminar_footer.addEventListener("click", () => ocultarElemento(caja_footer));
     boton_mandar_alerta.addEventListener("click", () => mandar_alerta());
 
-        //Poder dar enter y mandar msg
+    //Poder dar enter y mandar msg
     document.getElementById("texto-enviar").addEventListener("keydown", function (event) {
         if (event.key === "Enter") {  
             event.preventDefault();   //no salto de linea
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Ocultar el mensaje después de 3 segundos
         setTimeout(() => {
             caja_footer.classList.add("hidden");
-        }, 3000);
+        }, 5000);
     }
 
     function ocultarElemento(elemento) {
@@ -84,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function () {
         icono_cerrar.addEventListener("click", function(){
             icono_cerrar.parentElement.remove();
         });
+
+        notificacion.addEventListener("click", () => desplegar());
 
         notificacion.appendChild(icono_cerrar);
         mensajes.appendChild(notificacion);
@@ -127,15 +130,15 @@ document.addEventListener('DOMContentLoaded', function () {
         let texto = "";
         switch (tipo_mensaje) {
             case 'msg-error':
-                texto = "Error: " + texto_mensaje;
+                texto = "❌ Error: " + texto_mensaje;
                 caja_footer.classList.add('bg-red');
                 break;
             case 'msg-exito':
-                texto = "Exito: " + texto_mensaje;
+                texto = "✅ Exito: " + texto_mensaje;
                 caja_footer.classList.add('bg-green');
                 break;
             case 'msg-info':
-                texto = "Importante: " + texto_mensaje;
+                texto = "ℹ️ Importante: " + texto_mensaje;
                 caja_footer.classList.add('bg-gray');
                 break;
             default:
@@ -147,13 +150,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Ocultar el mensaje después de 3 segundos
         setTimeout(() => {
             caja_footer.classList.add("hidden");
-        }, 3000);
+        }, 5000);
     }
 
+    // Función para desplegar las notificaciones
+    function desplegar() {
 
-
-
-
-
+    }
 
 });

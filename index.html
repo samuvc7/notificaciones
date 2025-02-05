@@ -37,7 +37,12 @@
                     <option value="msg-info">Mensaje Informacion</option>
                 </select>
                 <input class="input-texto" id="texto-enviar" type="text">
-                <button class="boton" onclick="mandar_alerta(document.getElementById('opciones-mensaje').value, document.getElementById('texto-enviar').value)">Enviar</button>
+                <button class="boton-enviar" id="mandar_msg_alerta">Enviar</button>
+            </div>
+
+            <!-- Despliegue de las notificaciones -->
+            <div class="despliegue-notif">
+
             </div>
 
             <div id="caja_footer" class="footer hidden">
