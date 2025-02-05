@@ -1,5 +1,5 @@
 // Evento que se ejecuta al cargar el contenido del DOM
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', function () {
 
     // ====================== Constantes del DOM ======================
     const icono_campana = document.getElementById("icono_campana");
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // ====================== Variables ======================
 
     // ====================== Flujo ======================
-    setInterval(nuevaNotificacion, 5000);
+    setInterval(nuevaNotificacion, 500);
 
     // ====================== Eventos ======================
     campana.addEventListener("click", () => mostrarOcultarNotificaciones());
