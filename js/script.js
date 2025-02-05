@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // ====================== Variables ======================
+    let timeout = null;
 
     // ====================== Flujo ======================
     setInterval(nuevaNotificacion, 5000);
@@ -61,9 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         texto_msg_footer.textContent = mensaje;
+        clearTimeout(timeout);
 
         // Ocultar el mensaje después de 3 segundos
-        setTimeout(() => {
+        timeout = setTimeout(() => {
             caja_footer.classList.add("hidden");
         }, 5000);
     }
@@ -147,8 +149,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         texto_msg_footer.textContent = texto;
 
-        // Ocultar el mensaje después de 3 segundos
-        setTimeout(() => {
+        clearTimeout(timeout);
+
+        // Ocultar el mensaje después de 5 segundos
+        timeout = setTimeout(() => {
             caja_footer.classList.add("hidden");
         }, 5000);
     }
