@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const boton_eliminar_footer = document.getElementById("quitar_footer");
     const caja_footer = document.getElementById("caja_footer");
     const texto_msg_footer = document.getElementById("texto_msg_footer");
+    const boton_mandar_alerta = document.getElementById("mandar_msg_alerta");
 
 
     // ====================== Variables ======================
@@ -24,6 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
     boton_exito.addEventListener("click", () => mostrarMensajeFooter('exito'));
     boton_info.addEventListener("click", () => mostrarMensajeFooter('info'));
     boton_eliminar_footer.addEventListener("click", () => ocultarElemento(caja_footer));
+    boton_mandar_alerta.addEventListener("click", () => mandar_alerta());
+
+        //Poder dar enter y mandar msg
+    document.getElementById("texto-enviar").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {  
+            event.preventDefault();   //no salto de linea
+            boton_mandar_alerta.click();  // Simular clic en el botón
+        }
+    });
 
     // ====================== Funciones ======================
 
@@ -109,5 +119,41 @@ document.addEventListener('DOMContentLoaded', function () {
             mensajes.classList.add("invisible");
         }
     }
+
+    function mandar_alerta() {
+        let texto_mensaje = document.getElementById('texto-enviar').value;
+        let tipo_mensaje = document.getElementById('opciones-mensaje').value;
+        caja_footer.classList.remove("hidden", "bg-green", "bg-gray", "bg-red");
+        let texto = "";
+        switch (tipo_mensaje) {
+            case 'msg-error':
+                texto = "Error: " + texto_mensaje;
+                caja_footer.classList.add('bg-red');
+                break;
+            case 'msg-exito':
+                texto = "Exito: " + texto_mensaje;
+                caja_footer.classList.add('bg-green');
+                break;
+            case 'msg-info':
+                texto = "Importante: " + texto_mensaje;
+                caja_footer.classList.add('bg-gray');
+                break;
+            default:
+                texto = "";
+        }
+
+        texto_msg_footer.textContent = texto;
+
+        // Ocultar el mensaje después de 3 segundos
+        setTimeout(() => {
+            caja_footer.classList.add("hidden");
+        }, 3000);
+    }
+
+
+
+
+
+
 
 });
