@@ -60,13 +60,6 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.icono_cerrar{
-    align-items: self-start;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
 .bg-red {
     background-color: rgb(155, 60, 29);
     color: white;
@@ -87,15 +80,24 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    gap: 10px;
+
     position: fixed;  
     bottom: 0;        
-    left: 0;          
+    left: 0;
+
     width: 100%;      
     text-align: center;  
     padding: 20px; 
     font-size: 16px;  
     z-index: 1000;
+}  
+
+.icono_cerrar {
+    align-self: flex-end; 
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 
@@ -105,28 +107,29 @@ body {
 }
 
 
+.mandar-mensajes, .caja-enviar-msg{
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+}
+
 .input-texto, .boton {
     width: 200px;
     height: 25px;
-    border: 0px solid white; /*tiene borde por defecto*/
+    border: 0px solid white; /*quitar borde por defecto*/
     border-radius: 15px;
     box-shadow: inset -1px -4px 5px rgba(0, 0, 0, 0.7);
     background: linear-gradient(to right, rgb(238, 238, 238), rgb(244, 244, 244));
-    /* background: linear-gradient(to right, 135deg, #667eea, #764ba2); */
-    /* background: linear-gradient(45deg, #ff7e5f, #feb47b); */
     transition: 0.3s ease;
 }
 
 .input-texto:hover, .boton:hover {
     box-shadow: inset 1px 4px 5px rgba(0, 0, 0, 0.7);
     background: linear-gradient(to left, rgb(238, 238, 238), rgb(244, 244, 244));
-
-    /* background: linear-gradient(to left, 135deg, #667eea, #764ba2); */
-
 }
 
 .input-texto:focus {
-    outline: none; /*borde por defecto*/
+    outline: none; /*quitar borde por defecto*/
     box-shadow: inset 3px 6px 9px rgba(0, 0, 0, 0.7);
     width: 230px;
 }
@@ -137,13 +140,7 @@ body {
 }
 
 .boton:focus{
-    outline: none; /*borde por defecto*/
+    outline: none; /*quitar borde por defecto*/
     box-shadow: inset 3px 6px 9px rgba(0, 0, 0, 0.7);
 }
 
-
-.mandar-mensajes, .caja-enviar-msg{
-    display: flex;
-    padding: 10px;
-    gap: 10px;
-}
