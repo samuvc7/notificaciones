@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const caja_footer = document.getElementById("caja_footer");
     const texto_msg_footer = document.getElementById("texto_msg_footer");
     const boton_mandar_alerta = document.getElementById("mandar_msg_alerta");
+    const boton_marcar_como_leido = document.getElementById("icono_correo");
 
 
     // ====================== Variables ======================
@@ -22,12 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(nuevaNotificacion, 5000);
 
     // ====================== Eventos ======================
-    campana.addEventListener("click", () => mostrarOcultarNotificaciones());
+    icono_campana.addEventListener("click", () => mostrarOcultarNotificaciones());
     boton_error.addEventListener("click", () => mostrarMensajeFooter('error'));
     boton_exito.addEventListener("click", () => mostrarMensajeFooter('exito'));
     boton_info.addEventListener("click", () => mostrarMensajeFooter('info'));
     boton_eliminar_footer.addEventListener("click", () => ocultarElemento(caja_footer));
     boton_mandar_alerta.addEventListener("click", () => mandar_alerta());
+    boton_marcar_como_leido.addEventListener("click", () => eliminarTodosMensajes());
 
     //Poder dar enter y mandar msg
     document.getElementById("texto-enviar").addEventListener("keydown", function (event) {
@@ -72,6 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function ocultarElemento(elemento) {
         elemento.classList.add("hidden");
+    }
+
+    function eliminarTodosMensajes() {
+        let notificaciones = document.querySelectorAll(".notificacion");
+        notificaciones.forEach(elemento => elemento.remove());
+
     }
 
     // Función para añadir notificaciones
