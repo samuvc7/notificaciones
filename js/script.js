@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // ====================== Variables ======================
+    const nombres = ["Diego", "Ángel", "Mario", "María", "Aitor", "Elena", "Samuel", "Pedro"];
     let timeout = null;
+    let notif_id = 0;
+    let seguidores = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+    let likes = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
 
     // ====================== Flujo ======================
     setInterval(nuevaNotificacion, 5000);
@@ -80,6 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let notificaciones = document.querySelectorAll(".notificacion");
         notificaciones.forEach(elemento => elemento.remove());
 
+        despliegue.innerHTML = '';
+
     }
 
     // Función para añadir notificaciones
@@ -87,16 +93,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const notificacion = document.createElement("div");
         notificacion.classList.add("notificacion");
+        notificacion.id = notif_id++;
         notificacion.innerHTML = seleccionarNotificacion();
 
         const icono_cerrar = document.createElement("img");
         icono_cerrar.src = "imgs/cerrar_negro.png";
         icono_cerrar.className = "icono_cerrar";
-        icono_cerrar.addEventListener("click", function(){
-            icono_cerrar.parentElement.remove();
+        icono_cerrar.addEventListener("click", function(event) {
+            event.stopPropagation();
+
+            let notif = icono_cerrar.parentElement;
+
+            if (notif.id == despliegue.querySelector('article').id) {
+            despliegue.innerHTML = '';
+            }
+
+            notif.remove();
         });
 
-        notificacion.addEventListener("click", () => desplegar());
+        // Evento para desplegar las notificaciones
+        notificacion.addEventListener("click", function (event) {
+            let mensaje = notificacion.innerHTML;
+            let id = notificacion.id;
+            let nombre = nombres.find(nombre => mensaje.includes(nombre));
+
+            if (mensaje.includes("Gusta")) {
+                mostrarMeGusta(id, nombre);
+
+            } else if (mensaje.includes("Comentario")) {
+                mostrarComentario(id, nombre);
+
+            } else if (mensaje.includes("Mención")) {
+                mostrarMencion(id, nombre);
+
+            } else if (mensaje.includes("Seguidor")) {
+                mostrarSeguidor(id, nombre)
+
+            }
+
+        });
 
         notificacion.appendChild(icono_cerrar);
         mensajes.appendChild(notificacion);
@@ -104,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para seleccionar las notificaciones
     function seleccionarNotificacion() {
-        const nombres = ["Diego", "Ángel", "Mario", "María", "Aitor", "Elena", "Samuel", "Pedro"];
 
         const notificaciones = [
             "❤️ Nuevo Me Gusta: A {nombre} le gustó tu publicación.",
@@ -116,6 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Seleccionamos una notificación y una persona aleatoria
         const notificacion = notificaciones[Math.floor(Math.random() * notificaciones.length)];
+        if (notificacion == notificaciones[1]) likes++;
+        if (notificacion == notificaciones[3]) seguidores++;
         const nombre = nombres[Math.floor(Math.random() * nombres.length)];
         
         // Reemplazamos el nombre que hemos seleccionado en la notificación
@@ -126,10 +162,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function mostrarOcultarNotificaciones() {
         if (mensajes.classList.contains("invisible")) {
             icono_campana.src = "imgs/campana.png";
+            mensajes.style.visibility = "visible";
             mensajes.classList.remove("invisible");
+
         } else {
             icono_campana.src = "imgs/campana_tachada.png";
+            setTimeout(() => {
+                mensajes.style.visibility = "hidden";
+            }, 500);
             mensajes.classList.add("invisible");
+            
         }
     }
 
@@ -165,9 +207,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 5000);
     }
 
-    // Función para desplegar las notificaciones
-    function desplegar() {
+    // Función para mostrar un articulo
+    function mostrarMeGusta(id, nombre) {
+        despliegue.innerHTML = `
+            <article id="${id}">
+                <img src="https://picsum.photos/id/972/600/400" alt="">
+                <figcaption>❤️ A ${nombre} le gustó tu publicación.</figcaption>
+                <p>❤️ ${likes} Me Gustas</p>
+            </article>
+        `;
+    }
 
+    function mostrarComentario(id, nombre) {
+        despliegue.innerHTML = `
+            <article id="${id}">
+                <img src="https://picsum.photos/id/972/600/400" alt="">
+                <figcaption>💬 ${nombre} comentó en tu publicación.</figcaption>
+                <p>${nombre}: ¡Qué chulo!</p>
+            </article>
+        `;
+    }
+
+    function mostrarMencion(id, nombre) {
+        despliegue.innerHTML = `
+            <article id="${id}">
+                <img src="https://picsum.photos/id/42/600/400" alt="">
+                <figcaption>📢 ${nombre} te mencionó en una publicación.</figcaption>
+            </article>
+        `;
+    }
+
+    function mostrarSeguidor(id, nombre) {
+        despliegue.innerHTML = `<article id="${id}">👥 ${nombre} ha comenzado a seguirte.</article>`;
+        despliegue.innerHTML = `
+            <p>👥 ${nombre} ha comenzado a seguirte.</p>
+            <p>👥 ${seguidores} Seguidores</p>
+        `;
     }
 
 });
