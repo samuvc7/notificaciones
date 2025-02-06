@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Seleccionamos una notificación y una persona aleatoria
         const notificacion = notificaciones[Math.floor(Math.random() * notificaciones.length)];
-        if (notificacion == notificaciones[1]) likes++;
+        if (notificacion == notificaciones[0]) likes++;
         if (notificacion == notificaciones[3]) seguidores++;
         const nombre = nombres[Math.floor(Math.random() * nombres.length)];
         
