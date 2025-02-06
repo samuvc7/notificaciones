@@ -238,11 +238,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function mostrarSeguidor(id, nombre) {
-        despliegue.innerHTML = `<article id="${id}">👥 ${nombre} ha comenzado a seguirte.</article>`;
-        despliegue.innerHTML = `
-            <p>👥 ${nombre} ha comenzado a seguirte.</p>
-            <p>👥 ${seguidores} Seguidores</p>
-        `;
+        despliegue.innerHTML = `<article id="${id}"> ${nombre} ha comenzado a seguirte.
+        <p>👥 ${seguidores} Seguidores</p></article>`;
     }
 
 });

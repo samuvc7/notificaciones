@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="imgs/campana.png">
-        <link rel="stylesheet" href="css/style.css">
-        <title>Notificaciones</title>
-    </head>
 
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imgs/campana.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Notificaciones</title>
+</head>
 
-        <!-- Contenedor raíz -->
-        <div class="root">
+<body>
 
-            <!-- Campana para notificaciones -->
-            <div id="correo" class="correo">
-                <img id="icono_correo" src="imgs/mensaje_abierto.png" alt="correo" tittle="Marcar como leido">
-                <span class="tooltip">Marcar como leído</span>
-            </div>
+    <!-- Contenedor raíz -->
+    <div class="root">
 
-            <div id="campana" class="campana">
-                <img id="icono_campana" src="imgs/campana.png" alt="campana">
-            </div>
+        <!-- Campana para notificaciones -->
+        <div id="correo" class="correo">
+            <img id="icono_correo" src="imgs/mensaje_abierto.png" alt="correo" tittle="Marcar como leido">
+            <span class="tooltip">Marcar como leído</span>
+        </div>
+
+        <div id="campana" class="campana">
+            <img id="icono_campana" src="imgs/campana.png" alt="campana">
+        </div>
 
 
-            <!-- Mensajes -->
-            <div id="mensajes" class="mensajes">
+        <!-- Mensajes -->
+        <div id="mensajes" class="mensajes">
 
-            </div>
+        </div>
 
+        <div class="caja_envio_msg_footer">
             <div class="mandar-mensajes">
                 <button class="boton" id="boton_error">Error</button>
                 <button class="boton" id="boton_exito">Exito</button>
@@ -44,21 +46,22 @@
                 <input class="input-texto" id="texto-enviar" type="text">
                 <button class="boton" id="mandar_msg_alerta">Enviar</button>
             </div>
+        </div>
 
-            <!-- Despliegue de las notificaciones -->
-            <div id="despliegue-notif" class="despliegue-notif">
-
-            </div>
-
-            <div id="caja_footer" class="footer hidden">
-                <img class="icono_cerrar" id="quitar_footer" src="imgs/cerrar_negro.png">
-                <p id="texto_msg_footer"></p>
-            </div>
+        <!-- Despliegue de las notificaciones -->
+        <div id="despliegue-notif" class="despliegue-notif">
 
         </div>
-        
-    </body>
 
-    <script src="js/script.js"></script>
+        <div id="caja_footer" class="footer hidden">
+            <p id="texto_msg_footer"></p>
+            <img class="icono_cerrar" id="quitar_footer" src="imgs/cerrar_negro.png">
+        </div>
+
+    </div>
+
+</body>
+
+<script src="js/script.js"></script>
 
 </html>
