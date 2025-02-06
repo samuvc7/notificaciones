@@ -100,35 +100,43 @@ document.addEventListener('DOMContentLoaded', function () {
         icono_cerrar.src = "imgs/cerrar_negro.png";
         icono_cerrar.className = "icono_cerrar";
         icono_cerrar.addEventListener("click", function(event) {
-            event.stopPropagation();
 
             let notif = icono_cerrar.parentElement;
 
-            if (notif.id == despliegue.querySelector('article').id) {
-            despliegue.innerHTML = '';
+            if (despliegue.querySelector('article') != null) {
+
+                if (notif.id == despliegue.querySelector('article').id) {
+                    despliegue.innerHTML = '';
+                }
+
             }
 
             notif.remove();
+
         });
 
         // Evento para desplegar las notificaciones
         notificacion.addEventListener("click", function (event) {
-            let mensaje = notificacion.innerHTML;
-            let id = notificacion.id;
-            let nombre = nombres.find(nombre => mensaje.includes(nombre));
 
-            if (mensaje.includes("Gusta")) {
-                mostrarMeGusta(id, nombre);
+            if (event.target == notificacion) {
 
-            } else if (mensaje.includes("Comentario")) {
-                mostrarComentario(id, nombre);
-
-            } else if (mensaje.includes("Mención")) {
-                mostrarMencion(id, nombre);
-
-            } else if (mensaje.includes("Seguidor")) {
-                mostrarSeguidor(id, nombre)
-
+                let mensaje = notificacion.innerHTML;
+                let id = notificacion.id;
+                let nombre = nombres.find(nombre => mensaje.includes(nombre));
+    
+                if (mensaje.includes("Gusta")) {
+                    mostrarMeGusta(id, nombre);
+    
+                } else if (mensaje.includes("Comentario")) {
+                    mostrarComentario(id, nombre);
+    
+                } else if (mensaje.includes("Mención")) {
+                    mostrarMencion(id, nombre);
+    
+                } else if (mensaje.includes("Seguidor")) {
+                    mostrarSeguidor(id, nombre)
+    
+                }
             }
 
         });
